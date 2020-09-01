@@ -43,7 +43,7 @@ class SignUpComponent extends React.Component {
                     <br/>
                     <input
                         type="submit"
-                        value="Login"
+                        value="Sign Up"
                     />
                 </form>
             </div>

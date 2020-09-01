@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import {autoLogin} from './actions/userActions'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import LoginComponent from './components/LoginComponent'
 import SignUpComponent from './components/SignUpComponent'
@@ -11,25 +11,32 @@ import NavBar from './components/NavBar'
 import About from './components/About'
 
 import HighScores from './components/HighScores'
+import HomeNav from './components/HomeNav'
+import Dashboard from './components/Dashboard'
+import Footer from './components/Footer'
+import Profile from './components/Profile'
 
 
 class App extends React.Component{
 
   componentDidMount(){
     this.props.autoLogin()
-  }
+  } 
 
   render(){
+    console.log(this.props.userReducer.loggedIn)
     return (
       <Router>
         <div className="App">
-          <NavBar />
+        {/* <NavBar /> */}
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
             <Route path="/login" component={LoginComponent} />
             <Route path="/signup" component={SignUpComponent} />
-            <Route path="/HighScores" component={HighScores} />
+            <Route path="/highscores" component={HighScores} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/profile" component={Profile} />
           </Switch>
               {/* {
                 !this.props.userReducer.loggedIn ? <h1>Sign Up or Login!</h1> : <h1>Welcome, {this.props.userReducer.user.username}</h1>
@@ -44,10 +51,14 @@ class App extends React.Component{
   }
 }
 
+
+
 const Home = () => {
   return(
     <div>
-      <h1>Home Page</h1>
+      <HomeNav />
+      <LoginComponent />      
+      <Footer />
     </div>
   )
 };

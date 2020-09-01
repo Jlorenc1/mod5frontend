@@ -1,5 +1,20 @@
-// import * as tf from '@tensorflow/tfjs';
-// import * as tfd from '@tensorflow/tfjs-data';
+import React from 'react';
+import '../App.css'
+
+function ControllerComponent () {
+    return (
+        <div className="ControllerComponent">
+            <h1>ControllerComponent</h1>            
+        </div>
+    )
+}
+
+export default ControllerComponent;
+
+
+
+
+
 
 // import {ControllerDataset} from './controller_dataset';
 // import * as ui from './ui';

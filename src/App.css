@@ -7,7 +7,7 @@ nav{
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(73, 78, 80);
+  background: rgb(72, 72, 72);
   color: white;
 }
 
@@ -17,4 +17,14 @@ nav{
   justify-content: space-around;
   align-items: center;
   list-style: none;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(72, 72, 72);
+  color: white;
+  text-align: center;
 }
