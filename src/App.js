@@ -15,6 +15,7 @@ import HomeNav from './components/HomeNav'
 import Dashboard from './components/Dashboard'
 import Footer from './components/Footer'
 import Profile from './components/Profile'
+import HowTo from './components/HowTo'
 
 
 class App extends React.Component{
@@ -37,6 +38,7 @@ class App extends React.Component{
             <Route path="/highscores" component={HighScores} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/profile" component={Profile} />
+            <Route path="/howto" component={HowTo} />
           </Switch>
               {/* {
                 !this.props.userReducer.loggedIn ? <h1>Sign Up or Login!</h1> : <h1>Welcome, {this.props.userReducer.user.username}</h1>
@@ -56,8 +58,7 @@ class App extends React.Component{
 const Home = () => {
   return(
     <div>
-      <HomeNav />
-      <LoginComponent />      
+      <HomeNav />     
       <Footer />
     </div>
   )

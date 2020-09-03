@@ -14,6 +14,9 @@ function Footer () {
                     <Link style={navStyle} to='/about'>
                         <li>About</li>
                     </Link>
+                    <Link style={navStyle} to='/howto'>
+                        <li>How To</li>
+                    </Link>
                 </ul>
             </nav>           
     )

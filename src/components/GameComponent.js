@@ -1,17 +1,16 @@
 import React from 'react';
 import '../App.css'
+import { Game } from '../Containers';
 
-function GameComponent () {
+class GameComponent extends React.Component {
 
-
-    return (
-        <div className="GameComponent">
-            <h1>GameComponent</h1>
-            <canvas id="gameCanvas"></canvas>                     
-        </div>
-    )
+    render(){
+        return (
+            <div className="GameComponent">
+                <Game boardSize={11} playerSize={25} />
+            </div>
+        )
+    }
 }
 
 export default GameComponent;
-
-

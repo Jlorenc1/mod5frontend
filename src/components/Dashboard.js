@@ -11,7 +11,7 @@ function Dashboard () {
         <div className="Dashboard">
             <NavBar />
             <GameComponent />
-            <ControllerComponent />
+            {/* <ControllerComponent /> */}
             <Footer />
         </div>
     )
