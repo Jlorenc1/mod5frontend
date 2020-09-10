@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+// import React, { PropTypes } from 'react';
+import React from 'react';
 
 const style = () => {
     return {
@@ -17,7 +18,8 @@ const GameInfo = ({
     timeElapsed,
     playerScore,
     highScore,
-    globalHighScore = 'Loading...'
+    globalHighScore = 'Loading...',
+    startGame
 }) => {
     const { container, info } = style();
     return (
@@ -27,9 +29,10 @@ const GameInfo = ({
                 <p>Time: {timeElapsed}</p>
                 <p>Score: {playerScore}</p>
             </div>
-            <div style={info}>
+            <button onClick={startGame}>Reset</button>
+            {/* <div style={info}>
                 <p>High Score: {highScore}</p>
-            </div>
+            </div> */}
         </div>
     )
 }

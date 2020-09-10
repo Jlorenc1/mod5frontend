@@ -17,7 +17,7 @@ class SignUpComponent extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.signUserUp(this.state)
+        this.props.signUserUp(this.state, this.props.history)
     }
 
     render(){
@@ -53,7 +53,7 @@ class SignUpComponent extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signUserUp: (userInfo) => dispatch(signUserUp(userInfo))
+        signUserUp: (userInfo, history) => dispatch(signUserUp(userInfo, history))
     }
 }
 

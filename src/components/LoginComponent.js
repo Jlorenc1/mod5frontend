@@ -17,7 +17,7 @@ class LoginComponent extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.fetchUser(this.state)
+        this.props.fetchUser(this.state, this.props.history)
     }
 
     render(){
@@ -53,7 +53,7 @@ class LoginComponent extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUser: (userInfo) => dispatch(fetchUser(userInfo))
+        fetchUser: (userInfo, history) => dispatch(fetchUser(userInfo, history))
     }
 }
 

@@ -199,7 +199,7 @@ export default ControllerComponent;
 
 
 
-{/* <html>
+/* <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Webcam Pacman</title>
@@ -412,4 +412,4 @@ export default ControllerComponent;
   <script src="https://storage.googleapis.com/tfjs-examples/assets/webcam-transfer-learning/pacman-google.js"></script>
   <script src="index.js"></script>
 </body>
-</html> */}
+</html> */

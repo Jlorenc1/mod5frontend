@@ -2,7 +2,7 @@ const setUser = (payload) => ({ type: "SET_USER", payload})
 
 export const logUserOut = () => ({type: "LOG_OUT"})
 
-export const fetchUser = (userInfo) => dispatch => {
+export const fetchUser = (userInfo, history) => dispatch => {
     fetch(`http://localhost:4000/login`, {
         method: "POST",
         headers: {
@@ -15,10 +15,11 @@ export const fetchUser = (userInfo) => dispatch => {
     .then(data => {
         localStorage.setItem("token", data.token)
         dispatch(setUser(data.user))
+        history.push("/dashboard")
     })
 }
 
-export const signUserUp = (userInfo) => dispatch => {
+export const signUserUp = (userInfo, history) => dispatch => {
     fetch(`http://localhost:4000/users`, {
         method: "POST",
         headers: {
@@ -31,6 +32,7 @@ export const signUserUp = (userInfo) => dispatch => {
     .then(data => {
         localStorage.setItem("token", data.token)
         dispatch(setUser(data.user))
+        history.push("/dashboard")
     })
 }
 

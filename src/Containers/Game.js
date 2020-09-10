@@ -25,21 +25,22 @@ const getDefaultState = ({ boardSize, playerSize, highScore = 0 }) => {
         enemySpeed: 5,
         enemyIndex: 0,
         activeEnemies: 1,
-        baseScore: 10
+        baseScore: 10,
+        // lives: this.updateLives(3)
     }
 };
 
 export default class Game extends Component {
     constructor(props) {
         super(props);
-        const half = Math.floor(props.boardSize / 2) * props.playerSize;
+        // const half = Math.floor(props.boardSize / 2) * props.playerSize;
         const { boardSize, playerSize } = props;
         this.state = getDefaultState({ boardSize, playerSize })
     }
     
     placeEnemy = () => {
         // enemies always launch at player
-        const { player, maxDim } = this.state.size;
+        // const { player, maxDim } = this.state.size;
         const { player: playerPos } = this.state.positions;
 
         // assign to a random side
@@ -82,12 +83,14 @@ export default class Game extends Component {
                 newEnemy.top = position.top;
                 newEnemy.left = 0 - player;
                 break;
+            // case DEFAULT:
+            //     break;
         }
 
         return newEnemy;
     }
 
-    handlePlayerMovement = (dirObj) => {
+    handlePlayerMovement = (dirObj) => {                    //////tf links here
         const { top, left } = this.state.positions.player;
         const { player, maxDim } = this.state.size;
         
@@ -119,8 +122,19 @@ export default class Game extends Component {
     }
 
     handlePlayerCollision = () => {
-        this.resetGame();
+        //add lives here, can add functionality to lower score on collision
+        // console.log(this.state.lives)
+        // if (this.state.lives > 0) {
+        //     this.updateLives(this.state.lives)
+        // } else {
+            this.resetGame();
+        // }
     }
+
+    // updateLives = (numberOfLives) => {
+    //     numberOfLives -= 1
+
+    // }
 
     startGame = () => {
         this.enemyInterval = setInterval(this.updateEnemyPositions, 50);
@@ -217,9 +231,12 @@ export default class Game extends Component {
     }
 
     resetGame = () => {
-        const { boardSize, playerSize } = this.props;
+        const { boardSize, playerSize, sendScore } = this.props;
         const { playerScore, highScore, globalHighScore, debug } = this.state;
         
+        //call function here to grab playerscore
+        sendScore(playerScore);
+
         // clear intervals
         clearInterval(this.gameInterval); 
         clearInterval(this.enemyInterval);
@@ -228,7 +245,7 @@ export default class Game extends Component {
         // if high score is higher than global high score, update it
         if (playerScore > globalHighScore) {
             this.updateGlobalHighScore(playerScore);
-        }
+        }        
 
         // reset state
         this.setState({
@@ -239,7 +256,7 @@ export default class Game extends Component {
             globalHighScore
         });
         // restart game
-        this.startGame();
+        // this.startGame(); 
 
     }
 
@@ -280,7 +297,7 @@ export default class Game extends Component {
             margin: '0 auto'
         };
     }
-    
+    //function to start game on click of button, pass to game info, onclick call function
     render() {
         const { 
             size: { board, player }, 
@@ -296,8 +313,10 @@ export default class Game extends Component {
                 <GameInfo 
                     playerScore={playerScore} 
                     timeElapsed={timeElapsed}
-                    highScore={highScore}
-                    globalHighScore={globalHighScore} />
+                    highScore={highScore} 
+                    globalHighScore={globalHighScore}
+                    startGame={this.startGame}
+                    />
 
                 <Board dimension={board * player}>
                     <Player 
@@ -327,8 +346,8 @@ export default class Game extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.state.gameInterval);
-        clearInterval(this.state.enemyInterval);
-        clearInterval(this.state.timeInterval);
+        clearInterval(this.gameInterval);
+        clearInterval(this.enemyInterval);
+        clearInterval(this.timeInterval);
     }
 }
